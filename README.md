@@ -16,6 +16,12 @@ After the user is created in the UserService, the user is sent to the UserProduc
 
 ## Email Microservice
 
-The email service is responsible for sending notifications and email communications to users of the application. It receives messages through a RabbitMQ queue, processes those messages, and sends the emails according to the information contained in them.
-The EmailConsumer class is responsible for listening to the email queue and processing incoming messages.
-After receiving the message, the properties of the EmailRecordDto are copied to a new EmailModel object and sent to EmailService which is where the email sending logic is implemented.
+### Overview
+The Email service is responsible for sending notifications and email communications to users of the application. It receives messages through a RabbitMQ queue, processes those messages, and sends the emails based on the information contained in them.
+
+### Major Classes
+- EmailConsumer: Listens to the email queue and processes incoming messages.
+- EmailService: Implements the email sending logic by receiving the EmailModel object from the EmailConsumer and sending it.
+
+### RabbitMQ Integration
+EmailConsumer listens to the mail queue and, upon receiving a message, copies the properties of the EmailRecordDto to a new EmailModel object. This object is then sent to the EmailService, where the email's sending logic is implemented.
